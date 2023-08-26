@@ -207,11 +207,34 @@ python train.py -c configs/config_cifar100_ir100_sade.json
 ``` 
 python test.py -r checkpoint_path
 ``` 
-
+{'accuracy': 0.4976, 'many_class_num': 35, 'medium_class_num': 35, 'few_class_num': 30, 'many_shot_acc': 0.61485714, 'medium_shot_acc': 0.5091429, 'few_shot_acc': 0.34733337}
 * To evaluate expertise-diverse model on agnostic test class distributions, run:
 ``` 
 python test_all_cifar.py -r checkpoint_path
 ``` 
+=========================  Final results  =========================
+forward50
+60.53 48.8 38.67 58.57
+forward25
+60.5 47.93 32.85 56.77
+forward10
+60.58 48.09 32.9 54.88
+forward5
+60.1 47.35 30.75 52.25
+forward2
+60.75 47.98 31.25 49.86
+uniform
+61.51 50.91 34.73 49.77
+backward2
+60.42 47.62 30.85 44.54
+backward5
+61.83 48.91 31.1 42.09
+backward10
+63.04 48.48 31.16 39.65
+backward25
+57.14 47.64 31.18 36.64
+backward50
+61.63 48.56 31.61 35.24
 
 #### Test-time training
 * To test-time train the expertise-diverse model for agnostic test class distributions, run:
@@ -219,7 +242,56 @@ python test_all_cifar.py -r checkpoint_path
 python test_train_cifar.py -c configs/test_time_cifar100_ir100_sade.json -r checkpoint_path
 ``` 
 * One can change the imbalance ratio from 100 to 10/50 by changing the config file.
- 
+ =========================  Final results  =========================
+
+Top-1 accuracy on many-shot, medium-shot, few-shot and all classes:
+forward50
+68.99 48.26 18.5 65.53
+forward25
+68.84 47.85 19.06 62.82
+forward10
+67.88 49.1 21.85 59.18
+forward5
+68.87 48.15 19.95 55.96
+forward2
+64.5 50.1 30.33 52.04
+uniform
+56.51 49.54 38.0 48.52
+backward2
+51.1 47.5 40.25 45.69
+backward5
+43.5 44.83 42.94 43.67
+backward10
+46.55 46.46 42.61 44.09
+backward25
+42.53 44.01 42.56 42.52
+backward50
+42.4 43.82 43.62 43.28
+
+
+Aggregation weights of three experts:
+forward50
+0.55 0.36 0.1
+forward25
+0.56 0.33 0.1
+forward10
+0.5 0.37 0.13
+forward5
+0.5 0.38 0.12
+forward2
+0.39 0.34 0.27
+uniform
+0.28 0.32 0.4
+backward2
+0.22 0.31 0.47
+backward5
+0.16 0.27 0.57
+backward10
+0.16 0.3 0.54
+backward25
+0.16 0.27 0.57
+backward50
+0.13 0.25 0.62
 
 ### (3) Places-LT
 #### Training
